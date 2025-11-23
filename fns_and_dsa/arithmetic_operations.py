@@ -3,14 +3,15 @@
 def perform_operation(num1: float, num2: float, operation: str):
     """
     Perform basic arithmetic operations: add, subtract, multiply, divide.
-
+    Errors are overwritten with safe default values.
+    
     Parameters:
         num1 (float): The first number
         num2 (float): The second number
         operation (str): The operation to perform ('add', 'subtract', 'multiply', 'divide')
 
     Returns:
-        float or str: The result of the operation, or an error message for invalid cases
+        float: The result of the operation, or a safe default if an error occurs
     """
     if operation == "add":
         return num1 + num2
@@ -19,8 +20,9 @@ def perform_operation(num1: float, num2: float, operation: str):
     elif operation == "multiply":
         return num1 * num2
     elif operation == "divide":
-        if num2 == 0:
-            return "Error: Division by zero"
-        return num1 / num2
+        # overwrite divide by zero with infinity
+        return num1 / num2 if num2 != 0 else float("inf")
     else:
-        return "Error: Invalid operation"
+        # overwrite invalid operation with 0.0
+        return 0.0
+
