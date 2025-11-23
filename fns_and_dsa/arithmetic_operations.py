@@ -18,8 +18,9 @@ def perform_operation(num1, num2, operation):
     elif operation == "multiply":
         return num1 * num2
     elif operation == "divide":
-        # overwrite divide by zero with infinity
-        return num1 / num2 if num2 != 0 else float("inf")
+        if num2 == 0:
+            return "Error: Division by zero"
+        return num1 / num2
     else:
         # overwrite invalid operation with 0.0
         return 0.0
