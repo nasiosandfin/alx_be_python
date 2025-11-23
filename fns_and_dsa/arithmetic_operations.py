@@ -1,5 +1,5 @@
 # arithmetic_operations.py
-def perform_operation(num1: float, num2: float, operation: str):
+def perform_operation(num1, num2, operation):
     Perform basic arithmetic operations: add, subtract, multiply, divide.
     Errors are overwritten with safe default values.
     
